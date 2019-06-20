@@ -7,7 +7,7 @@ const port = process.env.PORT || 4001;
 
 //Redis Setup
 const redis = require('redis');
-const subscriber = this.redis.createClient();
+const subscriber = redis.createClient();
 subscriber.subscribe("design");
 //Setting up express and adding socketIo middleware
 const app = express();
