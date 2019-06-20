@@ -31,5 +31,6 @@ server.listen(port, () => console.log(`Listening on port ${port}`));
 const getApiAndEmit = async socket => {
     subscriber.on("message", function (channel, message) {
         socket.emit("FromAPI", JSON.parse(message)); // Emitting a new message. It will be consumed by the client
+        console.log(JSON.parse(message))
         });
   };
