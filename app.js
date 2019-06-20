@@ -17,10 +17,10 @@ const io = socketIo(server);
 let interval;
 io.on("connection", socket => {
   console.log("New client connected");
-  if (interval) {
-    clearInterval(interval);
-  }
-  interval = setInterval(() => getApiAndEmit(socket), 100);
+  subscriber.on("message", function (channel, message) {
+    socket.emit("FromAPI", JSON.parse(message)); // Emitting a new message. It will be consumed by the client
+    //console.log(JSON.parse(message))
+    });
   socket.on("disconnect", () => {
     console.log("Client disconnected");
   });
